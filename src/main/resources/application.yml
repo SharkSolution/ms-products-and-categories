@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://pos-db.cstsoiwu043r.us-east-1.rds.amazonaws.com:5432/pos_db
+    username: postgres
+    password: Pos2024Appdb!
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.format_sql: true
+  application:
+    name: ms-products-and-categories
