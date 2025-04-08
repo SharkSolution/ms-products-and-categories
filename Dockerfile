@@ -1,11 +1,14 @@
-FROM eclipse-temurin:17-jdk-alpine as builder
+FROM gradle:8.1.0-jdk17 AS builder
+
 WORKDIR /app
-COPY ../ ./
+COPY . ./
+
 RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
