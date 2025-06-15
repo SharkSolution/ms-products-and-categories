@@ -9,4 +9,6 @@ public interface ProductService {
     List<Product> getAllProducts();
     List<Product> getProductsByCategory(String categoryId);
     Product getProductById(String productId);
+    List<Product> searchProductsByName(String productName);
+    List<Product> searchProductsByCategoryAndName(String productName, String categoryId);
 }

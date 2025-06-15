@@ -29,4 +29,14 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(productId).get();
     }
 
+    @Override
+    public List<Product> searchProductsByName(String productName) {
+        return productRepository.searchProductsByName(productName);
+    }
+
+    @Override
+    public List<Product> searchProductsByCategoryAndName(String productName, String categoryId) {
+        return productRepository.searchProductsByCategoryAndName(productName, categoryId);
+    }
+
 }
