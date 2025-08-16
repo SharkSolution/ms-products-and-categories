@@ -3,10 +3,7 @@ package com.suresell.order.controller;
 import com.suresell.order.model.Product;
 import com.suresell.order.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,25 @@ public class ProductController {
     @GetMapping("/get/{productId}")
     public Product productById(@PathVariable String productId) {
         return productService.getProductById(productId);
+    }
+
+    @GetMapping("/search")
+    public List<Product> searchProducts(
+            @RequestParam(required = false) String productName,
+            @RequestParam(required = false) String categoryId) {
+
+        if ((productName == null || productName.trim().isEmpty()) && categoryId != null) {
+            return productService.getProductsByCategory(categoryId);
+        }
+
+        if (productName != null && !productName.trim().isEmpty()) {
+            if (categoryId != null && !categoryId.trim().isEmpty()) {
+                return productService.searchProductsByCategoryAndName(productName.trim(), categoryId);
+            } else {
+                return productService.searchProductsByName(productName.trim());
+            }
+        }
+
+        return productService.getAllProducts();
     }
 }
