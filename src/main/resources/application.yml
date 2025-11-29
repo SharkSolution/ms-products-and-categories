@@ -2,12 +2,10 @@ server:
   port: 8082
 spring:
   datasource:
-    url: jdbc:postgresql://posdbinstance.cstsoiwu043r.us-east-1.rds.amazonaws.com:5432/pos_db
-    username: postgres
-    password: Pos2024Appdb!
+    url: jdbc:postgresql://localhost:5432/pos_db
+    username: andrewramirez
+    password: sul4m1995*
   jpa:
-    hibernate:
-      ddl-auto: none
     properties:
       hibernate.format_sql: true
   application:
