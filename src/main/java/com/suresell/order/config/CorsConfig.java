@@ -14,8 +14,8 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        // Solo permite red Tailscale http://100.*.*.*:4200
-        config.addAllowedOriginPattern("*");
+        // Solo permite red Tailscale (100.x.x.x)
+        config.addAllowedOriginPattern("http://100.*.*.*:4200");
 
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
